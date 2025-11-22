@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>بوت تيليغرام بايثون على فيرسل</title>
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: light dark;
+        font-family: "Cairo", system-ui, sans-serif;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: radial-gradient(circle at top, #222842, #0f111a);
+        color: #f6f7fb;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+      }
+      main {
+        max-width: 720px;
+        background: rgba(15, 17, 26, 0.75);
+        border-radius: 18px;
+        backdrop-filter: blur(8px);
+        padding: 2.5rem;
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      }
+      h1 {
+        font-size: 2.4rem;
+        margin: 0 0 1rem;
+        text-align: center;
+      }
+      h2 {
+        font-size: 1.6rem;
+        margin-top: 2rem;
+      }
+      p {
+        line-height: 1.8;
+        font-size: 1.05rem;
+      }
+      code,
+      pre {
+        font-family: "Fira Code", "Cascadia Code", monospace;
+      }
+      pre {
+        border-radius: 12px;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.07);
+        overflow-x: auto;
+      }
+      a {
+        color: #6ecbff;
+      }
+      footer {
+        margin-top: 2.5rem;
+        font-size: 0.9rem;
+        color: #9aa7c7;
+        text-align: center;
+      }
+      ol {
+        padding-right: 1.5rem;
+      }
+      li {
+        margin-bottom: 0.75rem;
+      }
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.35rem 0.9rem;
+        border-radius: 999px;
+        background: rgba(110, 203, 255, 0.12);
+        color: #6ecbff;
+        font-size: 0.95rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="pill">نهج عملي</div>
+      <h1>بوت تيليغرام بلغة بايثون</h1>
+      <p>
+        تم إعداد هذا المشروع ليعمل كوِب هوك (Webhook) على منصة <strong>Vercel</strong>
+        باستخدام دوال Serverless بلغة بايثون. استعمله كأساس لبناء بوتات تيليغرامك
+        الخاصة بسرعة وبدون مجهود في إدارة الخوادم.
+      </p>
+
+      <h2>تشغيل محلي</h2>
+      <ol>
+        <li>ثبّت المتطلبات: <code>pip install -r requirements.txt</code>.</li>
+        <li>
+          عرّف متغير البيئة
+          <code>TELEGRAM_BOT_TOKEN</code>
+          في جلسة الطرفية.
+        </li>
+        <li>
+          استخدم أداة مثل
+          <a href="https://ngrok.com" target="_blank" rel="noopener"
+            >ngrok</a
+          >
+          لإنشاء رابط HTTPS ثم سجّل الوِب هوك بالطريقة التالية:
+          <pre><code>python tools/set_webhook.py https://YOUR-NGROK-ID.ngrok.app/api/telegram_bot</code></pre>
+        </li>
+        <li>
+          أرسل أي رسالة إلى البوت كي تتأكد من الاستجابة وتنفّذ الأوامر
+          المضمّنة (/start، /help، /time، /dice).
+        </li>
+      </ol>
+
+      <h2>النشر على Vercel</h2>
+      <ol>
+        <li>
+          أضف متغير البيئة <code>TELEGRAM_BOT_TOKEN</code> على لوحة تحكم
+          مشروعك في Vercel.
+        </li>
+        <li>
+          بعد النشر شغّل أداة الإعداد لتعيين الوِب هوك إلى رابط
+          <code>https://YOUR-DOMAIN/api/telegram_bot</code>.
+        </li>
+      </ol>
+
+      <h2>منطق البوت (Python)</h2>
+      <pre><code>
+from http.server import BaseHTTPRequestHandler
+import json, requests, os, time
+
+class handler(BaseHTTPRequestHandler):
+    def do_POST(self):
+        ...
+      </code></pre>
+
+      <footer>هذا القالب جاهز للتوسع وإضافة منطقك الخاص.</footer>
+    </main>
+  </body>
+</html>
